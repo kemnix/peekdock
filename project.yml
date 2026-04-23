@@ -1,0 +1,42 @@
+name: PeekDock
+options:
+  bundleIdPrefix: dev.kemnix
+  deploymentTarget:
+    macOS: "15.0"
+  xcodeVersion: "15.0"
+  developmentLanguage: en
+fileGroups:
+  - PeekDock/Localizable.xcstrings
+settings:
+  base:
+    SWIFT_EMIT_LOC_STRINGS: YES
+    OTHER_SWIFT_FLAGS: -file-prefix-map $(SRCROOT)=PeekDock
+  configs:
+    Release:
+      DEPLOYMENT_POSTPROCESSING: YES
+      STRIP_STYLE: all
+      STRIP_SWIFT_SYMBOLS: YES
+      COPY_PHASE_STRIP: YES
+knownRegions:
+  - en
+  - ja
+  - Base
+
+targets:
+  PeekDock:
+    type: application
+    platform: macOS
+    sources:
+      - PeekDock
+    entitlements:
+      path: PeekDock/PeekDock.entitlements
+    settings:
+      INFOPLIST_FILE: PeekDock/Info.plist
+      GENERATE_INFOPLIST_FILE: NO
+      CODE_SIGN_ENTITLEMENTS: PeekDock/PeekDock.entitlements
+      PRODUCT_BUNDLE_IDENTIFIER: dev.kemnix.peekdock
+      MACOSX_DEPLOYMENT_TARGET: "15.0"
+      SWIFT_VERSION: "5.9"
+      ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+    scheme:
+      testTargets: []
